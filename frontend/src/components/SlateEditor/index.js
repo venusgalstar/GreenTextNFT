@@ -11,18 +11,15 @@ const SlateEditor = () => {
     const initialValue = [
         {
             type: 'paragraph',
-            children: [{ text: 'A line of text in a paragraph.' }, ],
+            children: [{ text: 'A line of text in a paragraph.' }],
         },
     ] 
-    
-    console.log(initialValue);
 
     return (
         <Slate editor={editor} value={initialValue}>
             <Editable
                 spellCheck="false"
                 renderElement={renderElement}
-                placeholder="Enter some plain text..."
             />
         </Slate>
     );
