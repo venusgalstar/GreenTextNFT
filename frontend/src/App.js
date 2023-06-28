@@ -67,7 +67,7 @@ function App() {
                 </div>
                 <div className="w-full mt-1 flex flex-row justify-between">
                     <input type="file" id="myImage" onChange={selectImageFile} hidden />
-                    <label htmlFor="myImage" className="mx-auto button">Select Image</label>
+                    <label htmlFor="myImage" className="mx-auto button">Upload Image</label>
                     <button className="mx-auto button" onClick={mintNFT}>Mint</button>
                 </div>
                 <GreenText ref={gtContainer}>
