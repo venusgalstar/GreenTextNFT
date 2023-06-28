@@ -5,12 +5,14 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 /* For test */
 //import "hardhat/console.sol";
 
 contract GreenTextNFT is ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
+    using Strings for uint256;
     
     Counters.Counter private _tokenIdCounter;
     address payable private _adminAccount;
@@ -20,15 +22,16 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
     constructor(address adminAccount) ERC721("GreenText", "GreenText") {
         _adminAccount = payable(adminAccount);
         _mintFee = 3 * 10 ** 15;
-        _baseURL = "https://localhost/green-text-nft/";
-    }
-
-    function _baseURI() internal view override returns (string memory) {
-        return _baseURL;
+        _baseURL = "https://95.217.33.149/green-text-nft/";
     }
 
     function setBaseURI(string memory baseURI) external onlyOwner {
         _baseURL = baseURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        _requireMinted(tokenId);
+        return string(abi.encodePacked(_baseURL, tokenId.toString(), ".png"));
     }
 
     function setAdminAccount(address adminAccount) external onlyOwner {

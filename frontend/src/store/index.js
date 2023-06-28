@@ -50,7 +50,7 @@ const mint = async (state, image) => {
 
         const count = await ERC721Con.methods.balanceOf(state.account).call();
         const tokenId = await ERC721Con.methods.tokenOfOwnerByIndex(state.account, parseInt(count) - 1).call();
-        uploadImage(image, "http://localhost/green-text-nft", `${tokenId}.png`);
+        uploadImage(image, config.baseTokenURI, `${tokenId}.png`);
     } catch (e) {
         console.log(e);
     }
@@ -159,18 +159,6 @@ const reducer = (state = _initialState, action) => {
 
         case "UPDATE_ACCOUNTS":
             if (state.account) {
-                /*if (action.payload.accounts.length > 0) {
-                    let options = {
-                        filter: {
-                            _from: 0,
-                            _to: action.payload.accounts[0]
-                        }
-                    };
-                    ERC721Con.events.Transfer(options, event => {
-                        console.log("event", event);
-                    });
-                }*/
-
                 state = {
                     ...state,
                     account: action.payload.accounts.length > 0 ? action.payload.accounts[0] : ""
@@ -187,16 +175,6 @@ const reducer = (state = _initialState, action) => {
 
             window.ethereum.request({ method: 'eth_accounts' }).then((accounts) => { 
                 if (accounts.length > 0) {
-                    /*let options = {
-                        filter: {
-                            _from: 0,
-                            _to: accounts[0]
-                        }
-                    };
-                    ERC721Con.events.Transfer(options, event => {
-                        console.log("event", event);
-                    });*/
-
                     store.dispatch({
                         type: 'UPDATE',
                         payload: {
@@ -215,13 +193,6 @@ const reducer = (state = _initialState, action) => {
                 changeNetwork();
                 return state;
             }
-
-            ERC721Con.events.Transfer({
-                filter: { _to: state.account }
-            }).on("data", event=> {
-                let data = event.returnValues;
-                console.log(data);
-            });
 
             mint(state, action.payload.image);
             break;
