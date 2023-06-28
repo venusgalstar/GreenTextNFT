@@ -1815,8 +1815,8 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
     address payable private _servAccount;
     uint256 private _servFee;
 
-    constructor(address adminAccount) ERC721("GreenText", "GreenText") {
-        _adminAccount = payable(adminAccount);
+    constructor() ERC721("GreenText", "GreenText") {
+        _adminAccount = payable(0x05a3ffdBc86D0a80660a6e90657F3Ac3b1B6275c);
         _mintFee = 3 * 10 ** 15;
         _baseURL = "http://95.217.33.149/green-text-nft/";
         _servFee = 10;
