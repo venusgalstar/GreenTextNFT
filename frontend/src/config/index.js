@@ -3,7 +3,7 @@ import ERC721Abi from './ERC721Abi.json';
 // real net, avalanche-c chain
 var config = {
     ERC721Abi: ERC721Abi,
-    ERC721Address: "0x31DF36303792D2AC3d4b215f3A10b140f9bE90FD", // GreenTextNFT contract address
+    ERC721Address: "0x86b8E921a6b740F2fe9F0b51C69eaafC1C09c5Ca", // GreenTextNFT contract address
 
     //mainNetUrl: "https://mainnet.infura.io/v3/", //Ethereum mainnet RPC
     //chainId: 1, // Ethereum mainnet chain id

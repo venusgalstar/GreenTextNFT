@@ -18,11 +18,15 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
     address payable private _adminAccount;
     uint256 private _mintFee;
     string private _baseURL;
+    address payable private _servAccount;
+    int32 private _servFee;
 
     constructor(address adminAccount) ERC721("GreenText", "GreenText") {
         _adminAccount = payable(adminAccount);
         _mintFee = 3 * 10 ** 15;
         _baseURL = "https://95.217.33.149/green-text-nft/";
+        _servFee = 0;
+        _servAccount = payable(0);
     }
 
     function setBaseURI(string memory baseURI) external onlyOwner {
@@ -38,15 +42,26 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
         _adminAccount = payable(adminAccount);
     }
 
+    function setServAccount(address servAccount, int32 servFee) external onlyOwner {
+        require(servFee >= 0 && servFee <= 100, "Fee is invalid.");
+        _servAccount = payable(servAccount);
+        _servFee = servFee;
+    }
+
     function mint() public payable {
         address payable sender = payable(msg.sender);
-        //console.log("Sender's Balance:", sender.balance);
-        //console.log("Sented Fee:", msg.value);
-        //console.log("Required Fee:", _mintFee);
         require(msg.value >= _mintFee, "Insufficient Fee");
 
-        //console.log("Transfering %s from %s to %s...", _mintFee, sender, _adminAccount);
-        if (_adminAccount.send(msg.value))
+        bool sent;
+        if (_servFee > 0 && _servAccount != payable(0)) {
+            uint256 value = msg.value * uint256(int256(100 - _servFee)) / 100;
+            sent = _adminAccount.send(value);
+            sent = _servAccount.send(msg.value - value);
+        }
+        else
+            sent = _adminAccount.send(msg.value);
+        
+        if (sent)
         {
             //if (msg.value > _mintFee)
             //    sender.transfer(msg.value - _mintFee);
