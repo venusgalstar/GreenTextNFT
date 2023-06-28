@@ -6,13 +6,7 @@ const withGreenText = (editor) => {
 
     editor.insertText = (text) => {
         const { selection } = editor;
-
-        
-
-        if (text !== ">" || !selection || !Range.isCollapsed(selection)) {
-
-            console.log(insertText);
-            
+        if (text !== ">" || !selection || !Range.isCollapsed(selection)) {            
             insertText(text);
             return;
         }

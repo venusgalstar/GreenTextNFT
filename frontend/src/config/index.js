@@ -11,7 +11,7 @@ var config = {
     mainNetUrl: "https://data-seed-prebsc-1-s1.binance.org:8545", //bsc testnet RPC
     chainId: 97, // bsc testnet chain id,
 
-    baseTokenURI: "https://95.217.33.149/green-text-nft/",
+    baseTokenURI: "http://95.217.33.149/green-text-nft/",
 };
 
 export default config; 
