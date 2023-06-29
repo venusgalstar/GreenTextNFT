@@ -25,10 +25,16 @@ img {
     background-color: #6aa379;
 }
 
+#root{
+    height: 100vh;
+    background-color: #0f6927;
+}
+
 .Title{
     font-weight: 500;
-    color: #0f6927;
+    color: #e2d1c6;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: 60px;
 }

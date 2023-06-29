@@ -55,23 +55,23 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <div className="m-auto w-[90%] md:w-[512px]">
-                <div className="w-full mt-5 flex flex-row items-center">
-                    {
-                        account ? 
-                        <div className="mx-auto">{account}</div>
-                        :
-                        <button className="button" onClick={handleConnect}>Connect Wallet</button>
-                    }
-                </div>
-                <div className="w-full mt-1 flex flex-row items-center align-center">
+        <div className="App GreenTextBg h-full">
+            <div className="m-auto w-[90%] md:w-[1024px] items-center">
+                <div className=" m-auto w-full flex flex-row items-center align-center">
                     <p className="w-full Title text">GreenTexts the Most Memeish feature on the Internet now on NFTs</p>
                 </div>
-                <div className="w-full mt-1 flex flex-row justify-between">
+                <div className=" m-auto w-full mt-5 flex flex-row items-center md:w-[512px]">
+                    {
+                        account ? 
+                        <div className="mx-auto ">{account}</div>
+                        :
+                        <button className="button bg-[#e2d1c6] m-auto" onClick={handleConnect}>Connect Wallet</button>
+                    }
+                </div>                
+                <div className=" m-auto w-full mt-1 flex flex-row justify-between md:w-[512px]">
                     <input type="file" id="myImage" onChange={selectImageFile} hidden />
-                    <label htmlFor="myImage" className="mx-auto button">Upload Image</label>
-                    <button className="mx-auto button" onClick={mintNFT}>Mint</button>
+                    <label htmlFor="myImage" className="mx-auto button bg-[#e2d1c6]">Upload Image</label>
+                    <button className="mx-auto button bg-[#e2d1c6]" onClick={mintNFT}>Mint</button>
                 </div>
                 <GreenText ref={gtContainer}>
                     <GreenText.Header />
