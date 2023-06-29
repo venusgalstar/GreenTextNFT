@@ -65,6 +65,9 @@ function App() {
                         <button className="button" onClick={handleConnect}>Connect Wallet</button>
                     }
                 </div>
+                <div className="w-full mt-1 flex flex-row items-center align-center">
+                    <p className="w-full Title text">GreenTexts the Most Memeish feature on the Internet now on NFTs</p>
+                </div>
                 <div className="w-full mt-1 flex flex-row justify-between">
                     <input type="file" id="myImage" onChange={selectImageFile} hidden />
                     <label htmlFor="myImage" className="mx-auto button">Upload Image</label>

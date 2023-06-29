@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 const GreenText = forwardRef((props, ref) => {
     return (
-        <div className="flex flex-col text-[#810000] border border-[#d9bfb7] bg-[#f0e0d6] rounded-md" ref={ref}>
+        <div className="flex flex-col text-[#810000] border border-[#d9bfb7] GreenTextBg rounded-md" ref={ref}>
             { props.children }
         </div>
     )

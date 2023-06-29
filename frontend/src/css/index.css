@@ -19,3 +19,16 @@ body {
 img {
     display: initial !important;
 }
+
+
+.GreenTextBg{
+    background-color: #6aa379;
+}
+
+.Title{
+    font-weight: 500;
+    color: #0f6927;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
