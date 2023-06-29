@@ -13,7 +13,7 @@ function App() {
     const account = useSelector(state => state.account);
 
     const [imgData, setImgData] = useState({
-        src: '',
+        src: 'pepe.jpg',
         size: 0,
         type: 'none'
     });
@@ -57,8 +57,8 @@ function App() {
     return (
         <div className="App GreenTextBg h-full">
             <div className="m-auto w-[90%] md:w-[1024px] items-center">
-                <div className=" m-auto w-full flex flex-row items-center align-center">
-                    <p className="w-full Title text">GreenTexts the Most Memeish feature on the Internet now on NFTs</p>
+                <div className=" m-auto w-full flex flex-row items-center align-center Title_BG">
+                    {/* <p className="w-full Title text">GreenTexts the Most Memeish feature on the Internet now on NFTs</p> */}
                 </div>
                 <div className=" m-auto w-full mt-5 flex flex-row items-center md:w-[512px]">
                     {

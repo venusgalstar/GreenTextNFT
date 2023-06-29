@@ -31,10 +31,19 @@ img {
 }
 
 .Title{
-    font-weight: 500;
+    font-weight: 800;
     color: #e2d1c6;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 60px;
+    font-family: Inter,Open Sans,Helvetica Neue,helvetica,roboto,arial,sans-serif;
+}
+
+.Title_BG{
+    background-image: url('../../public/title.png');
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
 }
